@@ -1,5 +1,5 @@
 {% set name = "ormdantic" %}
-{% set version = "1.5.1" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ormdantic-{{ version }}.tar.gz
-  sha256: 6b43512c40e1942abe88a43bc156ca3e21e1ee2d02bfb1abb801be8c13bae774
+  sha256: 2ab6e3c43c3825a163c753f08c752a9b62de21de655c3e62b0295a2feb52d621
 
 build:
   noarch: python
