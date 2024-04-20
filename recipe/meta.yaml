@@ -24,7 +24,8 @@ requirements:
     - pypika ==0.48.9
     - python >=3.10
     - sqlalchemy >=2.0.0
-    - typing-extensions <4.5.0,>=3.7.4
+    # From sqlalchemy[ayncio]
+    - greenlet !=0.4.17
 
 test:
   source_files:
