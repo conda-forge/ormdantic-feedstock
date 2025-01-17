@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "ormdantic" %}
 {% set version = "1.7.0" %}
 
@@ -6,23 +7,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ormdantic-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ormdantic-{{ version }}.tar.gz
   sha256: 09965f5e0fa7f832253a0a27782ed9105d179d8b6b7ae6ea01e1f9dcc5535897
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - hatchling
     - pip
-    - python >=3.10
+    - python {{ python_min }}
   run:
     - pydantic >=1.6.2,!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,<2.0.0
     - pypika ==0.48.9
-    - python >=3.10
+    - python >={{ python_min }}
     - sqlalchemy >=2.0.0
     # From sqlalchemy[ayncio]
     - greenlet !=0.4.17
@@ -45,6 +46,7 @@ test:
     - python-decouple
     # # sqlalchemy force version 1.4.42 for tests
     # - sqlalchemy ==1.4.42
+    - python {{ python_min }}
 
 about:
   home: https://ormdantic.yezz.me/
