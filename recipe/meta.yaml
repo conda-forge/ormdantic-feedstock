@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "ormdantic" %}
-{% set version = "1.7.0" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ormdantic-{{ version }}.tar.gz
-  sha256: 09965f5e0fa7f832253a0a27782ed9105d179d8b6b7ae6ea01e1f9dcc5535897
+  sha256: c4e4393e8c35f2d155b0175a50bd103a68fffef3c16b0fe9600ece4229d6a101
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
