@@ -1,0 +1,54 @@
+schema_version: 1
+
+context:
+  name: ormdantic
+  version: "2.0.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ormdantic-${{ version }}.tar.gz
+  sha256: c4e4393e8c35f2d155b0175a50bd103a68fffef3c16b0fe9600ece4229d6a101
+
+build:
+  number: 0
+  script:
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    - ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  build:
+    - ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('rust') }}
+    - cargo-bundle-licenses
+  host:
+    - maturin >=1,<2
+    - pip
+    - python
+  run:
+    - python
+    - tomli >=2.0.0
+    - typer >=0.26.7
+    - pydantic >=2.0.0
+
+tests:
+  - python:
+      imports:
+        - ormdantic
+      pip_check: true
+
+about:
+  summary: Asynchronous ORM that uses pydantic models to represent database tables
+  license: MIT
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  homepage: https://ormdantic.yezz.me/
+  repository: https://github.com/yezz123/ormdantic
+
+extra:
+  recipe-maintainers:
+    - thewchan
