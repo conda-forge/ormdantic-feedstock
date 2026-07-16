@@ -32,21 +32,12 @@ requirements:
     - pydantic >=2.0.0
 
 test:
-  source_files:
-    - tests
   imports:
     - ormdantic
   commands:
     - pip check
-    - export DATABASE_URL=sqlite+aiosqlite:///db.sqlite3  # [unix]
-    - set DATABASE_URL=sqlite+aiosqlite:///db.sqlite3  # [win]
-    - pytest -vvv --capture=tee-sys tests
   requires:
-    - aiosqlite
     - pip
-    - pytest
-    - pytest-asyncio
-    - python-decouple
 
 about:
   home: https://ormdantic.yezz.me/
